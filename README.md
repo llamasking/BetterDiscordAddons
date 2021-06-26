@@ -15,3 +15,21 @@ A Series of Plugins and Themes for BetterDiscord
 ## [Themes](https://github.com/mwittrien/BetterDiscordAddons/tree/master/Themes/)
 
 Copyright (C) 2016-2021 Mirco Wittrien
+
+---
+
+## Fork Information
+
+Recently, DevilBro has gone out of their way to ruin the experience for Lightcord users. This has been done through [adding notifications](https://github.com/mwittrien/BetterDiscordAddons/commit/e481f645747e32634ef919f26eb661dcdda3c274#diff-759f4a1b9b8754d5a620f30671734d05697c031dbd1e71f90279ba76bf32588cR33-R41) (which spam if using multiple of his plugins), though [disabling the plugins outright](https://github.com/mwittrien/BetterDiscordAddons/commit/e481f645747e32634ef919f26eb661dcdda3c274#diff-759f4a1b9b8754d5a620f30671734d05697c031dbd1e71f90279ba76bf32588cR39-R40), and by [attempting to make the settings page completely inaccessible](https://github.com/mwittrien/BetterDiscordAddons/commit/b08d4975d92dac7d7cee418506113ce8c7d6be93#diff-75d1fc92ea4190474623c5758d35c446306453d8ba186069ac4534c9552e9fc9R1417-R1426).
+
+As such, I have decided to undo those changes. This repo is an automated fork of DevilBro's plugins with all of those changes removed. 
+
+I have also replaced the auto-update URLs with my own. This is so that the updater will download these forked versions, rather than the unmodified ones from DevilBro.
+
+---
+
+**Note 1:** Do not under any circumstances harass or bother DevilBro about their choice to actively not support Lightcord.
+
+**Note 2:** I am only stopping these plugins from actively breaking on Lightcord. I make absolutely no attempt to fix any bugs which may occur on Lightcord. Furthermore, you use Lightcord entirely at your own risk.
+
+**Note 3:** All links in this repository link back to DevilBro's original repo/plugins. You must use GitHub's file browser to access the files/folders you want. If you click on the download button, you will get the original plugin and not the patched version.
