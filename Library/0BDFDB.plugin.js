@@ -9,7 +9,7 @@
  * @patreon https://www.patreon.com/MircoWittrien
  * @website https://mwittrien.github.io/
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Library/
- * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js
+ * @updateUrl https://llamasking.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js
  */
 
 module.exports = (_ => {
@@ -22,7 +22,7 @@ module.exports = (_ => {
 			"version": "1.9.2",
 			"description": "Required Library for DevilBro's Plugins"
 		},
-		"rawUrl": `https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js`,
+		"rawUrl": `https://llamasking.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js`,
 		"changeLog": {
 			"fixed": {
 				"Server Changes AGAIN": "Fixed Stuff for anything changing Servers",
@@ -1091,7 +1091,7 @@ module.exports = (_ => {
 		return libHashes[fileName] && oldLibHashes[fileName] && libHashes[fileName] == oldLibHashes[fileName] && fs.existsSync(path) && (fs.readFileSync(path) || "").toString();
 	};
 	const requestLibraryHashes = tryAgain => {
-		request("https://api.github.com/repos/mwittrien/BetterDiscordAddons/contents/Library/_res/", {headers: {"user-agent": "node.js"}}, (e, r, b) => {
+		request("https://api.github.com/repos/llamasking/BetterDiscordAddons/contents/Library/_res/", {headers: {"user-agent": "node.js"}}, (e, r, b) => {
 			if ((e || !b || r.statusCode != 200) && tryAgain) return BDFDB.TimeUtils.timeout(_ => requestLibraryHashes(), 10000);
 			try {
 				b = JSON.parse(b);
@@ -1109,7 +1109,7 @@ module.exports = (_ => {
 		
 			const backupData = getBackup(dataFileName, dataFilePath);
 			if (backupData) parseData(backupData);
-			else request.get(`https://mwittrien.github.io/BetterDiscordAddons/Library/_res/${dataFileName}`, (e, r, b) => {
+			else request.get(`https://llamasking.github.io/BetterDiscordAddons/Library/_res/${dataFileName}`, (e, r, b) => {
 				if ((e || !b || r.statusCode != 200) && tryAgain) return BDFDB.TimeUtils.timeout(_ => requestLibraryData(), 10000);
 				if (!e && b && r.statusCode == 200) parseData(b, true);
 				else parseData(fs.existsSync(dataFilePath) && (fs.readFileSync(dataFilePath) || "").toString());
@@ -1146,7 +1146,7 @@ module.exports = (_ => {
 		
 		const backupCSS = getBackup(cssFileName, cssFilePath);
 		if (backupCSS) parseCSS(backupCSS);
-		else request.get(`https://mwittrien.github.io/BetterDiscordAddons/Library/_res/${cssFileName}`, (e, r, b) => {
+		else request.get(`https://llamasking.github.io/BetterDiscordAddons/Library/_res/${cssFileName}`, (e, r, b) => {
 			if ((e || !b || r.statusCode != 200) && tryAgain) return BDFDB.TimeUtils.timeout(_ => requestLibraryData(), 10000);
 			if (!e && b && r.statusCode == 200) {
 				fs.writeFile(cssFilePath, b, _ => {});
@@ -1185,7 +1185,7 @@ module.exports = (_ => {
 				if (plugin.rawUrl) return plugin.rawUrl;
 				else {
 					let name = InternalData.PluginNameMap && InternalData.PluginNameMap[plugin.name] || plugin.name;
-					return `https://mwittrien.github.io/BetterDiscordAddons/Plugins/${name}/${name}.plugin.js`;
+					return `https://llamasking.github.io/BetterDiscordAddons/Plugins/${name}/${name}.plugin.js`;
 				}
 			}
 			else return "";
@@ -8079,13 +8079,6 @@ module.exports = (_ => {
 		InternalBDFDB.settings = BDFDB.DataUtils.get(InternalBDFDB);
 		changeLogs = BDFDB.DataUtils.load(BDFDB, "changeLogs");
 		BDFDB.PluginUtils.checkChangeLog(BDFDB);
-		
-		if (window.Lightcord && !Node.prototype.isPrototypeOf(window.Lightcord) || window.LightCord && !Node.prototype.isPrototypeOf(window.LightCord) || window.Astra && !Node.prototype.isPrototypeOf(window.Astra)) BDFDB.ModalUtils.open(BDFDB, {
-			header: "Attention!",
-			subHeader: "Modified Client detected",
-			text: "We detected that you are using LightCord. Unlike other client modificaton (BetterDiscord, PowerCord), LightCord is a completely modified client, which is no longer maintained by Discord but instead by a 3rd party. This will put your account at risk, not only because the 3rd party might use your account credentials as they like, you are also breaking a higher instance of Discord's ToS by using a 3rd party client instead of using a simple client mod which injects itself into the original client app. Many Plugins won't flawlessly run on LightCord. We do not support LightCord and as such, we do not provide help or support. You should switch to another modification as soon as possible.",
-			buttons: [{color: "RED", contents: BDFDB.LanguageUtils.LanguageStrings.OKAY, close: true}]
-		});
 		
 		InternalBDFDB.patchPlugin(BDFDB);
 		
